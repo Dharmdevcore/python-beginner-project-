@@ -1,0 +1,28 @@
+# Install: pip install chatterbot
+
+from chatterbot import ChatBot
+from chatterbot.trainers import ListTrainer
+
+chatbot = ChatBot('MyBot')
+
+trainer = ListTrainer(chatbot)
+trainer.train([
+    "Hello",
+    "Hi!",
+    "How are you?",
+    "I'm doing well, thanks!",
+    "What's your name?",
+    "I'm a chatbot.",
+    "Goodbye",
+    "See you later!"
+])
+
+print("Bot: Hello! Type 'quit' to exit.\n")
+
+while True:
+    user_input = input("You: ")
+    if user_input.lower() == "quit":
+        print("Bot: Goodbye!")
+        break
+    response = chatbot.get_response(user_input)
+    print(f"Bot: {response}")
